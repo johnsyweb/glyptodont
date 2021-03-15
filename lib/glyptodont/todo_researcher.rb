@@ -6,17 +6,18 @@ require "rugged"
 module Glyptodont
   # Finds all the TODOs in a directory managed by Git, who last touched them and when.
   class TodoResearcher
-    def initialize(directory)
+    def initialize(directory, ignore)
       @directory = directory
+      @ignore = ignore
     end
 
     def research
-      annotate(extract_details(git.grep(keyword_rexexp)))
+      annotate(exclude_ignored(extract_details(git.grep(keyword_rexexp))))
     end
 
     private
 
-    attr_reader :directory
+    attr_reader :directory, :ignore
 
     def git
       Git.open(directory)
@@ -46,6 +47,10 @@ module Glyptodont
           }
         end
       end
+    end
+
+    def exclude_ignored(todos)
+      todos.reject { |todo| ignore.include?(todo.slice(:file, :line)) }
     end
 
     def annotate(todos)
