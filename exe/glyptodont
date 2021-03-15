@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "glyptodont"
+
+exit(Glyptodont.check(directory: ARGV[0], threshold: ARGV[1].to_i, max_age_in_days: ARGV[2].to_i))
