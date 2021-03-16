@@ -11,7 +11,7 @@ module Glyptodont
 
       def check
         @count = todos.size
-        @reportable_todos = todos[threshold..-1]
+        @reportable_todos = passed? ? todos : []
         message
       end
 
