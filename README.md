@@ -95,3 +95,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 Everyone interacting in the Glyptodont project's codebases, issue trackers, chat
 rooms and mailing lists is expected to follow the [code of
 conduct](https://github.com/johnsyweb/glyptodont/blob/master/CODE_OF_CONDUCT.md).
+
+## See also
+
+<https://github.com/johnsyweb/glyptodont-docker> to run this in a container,
+ideal for your CI pipeline.
