@@ -25,7 +25,6 @@ module Glyptodont
                   else
                     {}
                   end
-      end
     end
 
     def extract_ignore_set

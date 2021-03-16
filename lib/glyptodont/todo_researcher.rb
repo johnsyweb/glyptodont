@@ -9,6 +9,7 @@ module Glyptodont
     def initialize(directory, ignore)
       @directory = directory
       @ignore = ignore
+      @annotator = {}
     end
 
     def research
@@ -65,7 +66,8 @@ module Glyptodont
     end
 
     def line_info(file_path:, line_number:)
-      Rugged::Blame.new(repository, file_path).for_line(line_number)
+      @annotator[file_path] ||= Rugged::Blame.new(repository, file_path)
+      @annotator[file_path].for_line(line_number)
     end
 
     def repository
