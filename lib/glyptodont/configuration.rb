@@ -12,7 +12,7 @@ module Glyptodont
     end
 
     def ignore
-      @ignore ||= extract_ignore_set
+      @ignore ||= extract_ignore_set || []
     end
 
     private
@@ -20,11 +20,15 @@ module Glyptodont
     attr_reader :config_filename
 
     def config
-      @config ||= YAML.load_file(config_filename)
+      @config ||= begin
+        YAML.load_file(config_filename)
+      rescue Errno::ENOENT
+        {}
+      end
     end
 
     def extract_ignore_set
-      config["ignore"].map do |line|
+      config.fetch("ignore", []).map do |line|
         parts = line.split(":", 2)
         {
           file: parts[0],

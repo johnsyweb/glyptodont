@@ -9,18 +9,26 @@ require_relative "glyptodont/version"
 
 # This is where the magic happens
 module Glyptodont
-  def self.check(directory:, threshold:, max_age_in_days:)
-    ignore = Configuration.new(directory).ignore
+  class << self
+    def check(directory:, threshold:, max_age_in_days:)
+      @configuration ||= Configuration.new(directory)
 
-    todos = TodoResearcher.new(directory, ignore).research
+      todos = TodoResearcher.new(directory, ignore).research
 
-    checks = [
-      Checkers::Counter.new(todos: todos, threshold: threshold),
-      Checkers::Age.new(todos: todos, threshold: max_age_in_days)
-    ].freeze
+      checks = [
+        Checkers::Counter.new(todos: todos, threshold: threshold),
+        Checkers::Age.new(todos: todos, threshold: max_age_in_days)
+      ].freeze
 
-    checks.each { |check| puts check.check }
+      checks.each { |check| puts check.check }
 
-    checks.all?(&:passed?)
+      checks.all?(&:passed?)
+    end
+
+    attr_reader :configuration
+
+    def ignore
+      configuration.ignore
+    end
   end
 end
