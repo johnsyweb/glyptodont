@@ -20,10 +20,11 @@ module Glyptodont
     attr_reader :config_filename
 
     def config
-      @config ||= begin
-        YAML.load_file(config_filename)
-      rescue Errno::ENOENT
-        {}
+      @config ||= if File.exist?(config_filename)
+                    YAML.load_file(config_filename)
+                  else
+                    {}
+                  end
       end
     end
 

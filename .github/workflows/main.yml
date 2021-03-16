@@ -10,12 +10,15 @@ jobs:
         ruby: ['2.4', '2.5', '2.6', '2.7', '3.0']
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-    - name: Run the default task
+
+    - name: Run The CI Build
       run: |
         gem install bundler
         sudo apt install cmake

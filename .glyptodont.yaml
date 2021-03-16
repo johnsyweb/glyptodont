@@ -1,7 +1,7 @@
 ---
 ignore:
-  - README.md:10
-  - README.md:15
+  - README.md:11
+  - README.md:16
   - lib/glyptodont/checkers/counter.rb:28
   - lib/glyptodont/checkers/counter.rb:30
   - lib/glyptodont/todo_researcher.rb:32
