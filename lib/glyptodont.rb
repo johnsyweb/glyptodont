@@ -10,6 +10,6 @@ require_relative "glyptodont/todo_researcher"
 
 module Glyptodont
   def self.check
-    Checker.new.check(ARGV)
+    Checker.new(ARGV).check
   end
 end
