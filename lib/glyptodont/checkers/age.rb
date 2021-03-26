@@ -10,17 +10,17 @@ module Glyptodont
       end
 
       def check
-        @age, @reportable_todos = oldest_todos
+        @reportable_todos = oldest_todos
         message
       end
 
       def passed?
-        todos.empty? || age <= threshold
+        reportable_todos.empty?
       end
 
       private
 
-      attr_reader :todos, :threshold, :age, :reportable_todos
+      attr_reader :todos, :threshold, :reportable_todos
 
       def message
         if todos.empty?
@@ -28,14 +28,16 @@ module Glyptodont
         elsif passed?
           "At #{Glyptodont.pluralize(age, "day")}, TODOs are fresh enough for now"
         else
-          "Some TODOs are too stale at #{Glyptodont.pluralize(age, "day")} old:\n" +
+          age = reportable_todos.last[:age]
+          "Some TODOs are too stale at more than #{Glyptodont.pluralize(age - 1, "day")} old:\n" +
             reportable_todos.map { |t| Glyptodont.format_todo(t) }.join("\n")
         end
       end
 
       def oldest_todos
-        todos.group_by { |todo| todo[:age] }
-             .max_by { |age, _group| age }
+        todos.select { |todo| todo[:age] > threshold }
+             .sort_by { |todo| todo[:age] }
+             .reverse
       end
     end
   end
