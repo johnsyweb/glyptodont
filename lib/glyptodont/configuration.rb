@@ -7,12 +7,23 @@ module Glyptodont
   # Allow for configuring the tool
   class Configuration
     FILENAME = ".glyptodont.yaml"
+    DEFAULT_THRESHOLD = 10
+    DEFAULT_MAX_AGE_IN_DAYS = 14
+
     def initialize(directory)
       @config_filename = File.join(directory, FILENAME)
     end
 
     def ignore
       @ignore ||= extract_ignore_set || []
+    end
+
+    def threshold
+      @threshold ||= config.fetch("threshold", DEFAULT_THRESHOLD)
+    end
+
+    def max_age_in_days
+      @max_age_in_days ||= config.fetch("max_age_in_days", DEFAULT_MAX_AGE_IN_DAYS)
     end
 
     private
