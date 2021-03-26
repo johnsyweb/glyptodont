@@ -26,10 +26,11 @@ module Glyptodont
         if todos.empty?
           "Nothing left to do"
         elsif passed?
-          "At #{Glyptodont.pluralize(age, "day")}, TODOs are fresh enough for now"
+          oldest = todos.max_by { |t| t[:age] }
+          "At #{Glyptodont.pluralize(oldest[:age], "day")}, TODOs are fresh enough for now"
         else
-          age = reportable_todos.last[:age]
-          "Some TODOs are too stale at more than #{Glyptodont.pluralize(age - 1, "day")} old:\n" +
+          youngest_stale = reportable_todos.last[:age]
+          "Some TODOs are too stale at more than #{Glyptodont.pluralize(youngest_stale - 1, "day")} old:\n" +
             reportable_todos.map { |t| Glyptodont.format_todo(t) }.join("\n")
         end
       end
