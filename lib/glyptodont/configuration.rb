@@ -21,7 +21,7 @@ module Glyptodont
 
     def config
       @config ||= if File.exist?(config_filename)
-                    YAML.load_file(config_filename)
+                    YAML.load_file(config_filename, fallback: {})
                   else
                     {}
                   end
