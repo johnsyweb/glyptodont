@@ -9,10 +9,9 @@ module Glyptodont
   class Options
     attr_reader :directory, :threshold, :max_age_in_days
 
-    def initialize
+    def initialize(args)
+      @args = args
       @directory = "."
-      @threshold = 10
-      @max_age_in_days = 14
       parse
     end
 
@@ -26,7 +25,7 @@ module Glyptodont
         threshold_option(opts)
         max_age_in_days_option(opts)
         version_option(opts)
-      end.parse!(ARGV)
+      end.parse!(@args)
     end
 
     def directory_option(opts)
