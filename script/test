@@ -10,6 +10,9 @@ cd "$(dirname "$0")/.."
 
 [ -z "$DEBUG" ] || set -x
 
+echo "==> Code quality…"
+bundle exec rubocop
+
 echo "==> Running tests…"
 
 if [ -n "$1" ]; then
