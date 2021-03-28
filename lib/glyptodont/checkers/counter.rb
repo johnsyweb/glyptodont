@@ -10,8 +10,6 @@ module Glyptodont
       end
 
       def check
-        @count = todos.size
-        @reportable_todos = passed? ? todos : []
         message
       end
 
@@ -20,6 +18,10 @@ module Glyptodont
       end
 
       private
+
+      def count
+        @count ||= todos.size
+      end
 
       def message
         if count.zero?
@@ -32,7 +34,7 @@ module Glyptodont
         end
       end
 
-      attr_reader :todos, :threshold, :count
+      attr_reader :todos, :threshold
     end
   end
 end
