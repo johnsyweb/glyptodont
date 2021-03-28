@@ -1,9 +1,16 @@
 # frozen_string_literal: true
 
+require_relative "checkers/age"
+require_relative "checkers/counter"
+require_relative "configuration"
+require_relative "formatting"
+require_relative "options"
+require_relative "todo_researcher"
+
 require "forwardable"
 
 module Glyptodont
-  # This is where the magic happens
+  # Main class where all the work happens
   class Checker
     def initialize(args)
       @options = Options.new(args)
