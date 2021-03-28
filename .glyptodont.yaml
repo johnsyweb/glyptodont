@@ -1,10 +1,14 @@
 ---
+threshold: 1
+max_age_in_days: 1
 ignore:
   - README.md:11
   - README.md:16
-  - lib/glyptodont/checkers/counter.rb:28
   - lib/glyptodont/checkers/counter.rb:30
-  - lib/glyptodont/todo_researcher.rb:32
+  - lib/glyptodont/checkers/counter.rb:32
   - lib/glyptodont/todo_researcher.rb:33
   - lib/glyptodont/todo_researcher.rb:34
   - lib/glyptodont/todo_researcher.rb:35
+  - lib/glyptodont/todo_researcher.rb:36
+  - spec/checkers/counter_spec.rb:20
+  - spec/checkers/counter_spec.rb:28
