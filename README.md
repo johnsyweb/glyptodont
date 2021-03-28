@@ -59,17 +59,29 @@ Usage: glyptodont [options]
 ## Configuration
 
 glyptodont looks for an optional `.glyptodont.yaml` configuration file in the
-root of the directory being scanned, which contains an `ignore` list of
-`file_name:line_number` pairs to ignore when researching TODOs. This may be
-useful if you have, for example, Spanish language text in your project.
+root of the directory being scanned.
+
+### Sections
+
+- `threshold`: Maximum number of TODOs to allow. Can be overridden by
+  command-line options.
+- `max_age_in_days`: Maximum number of days to allow TODOs to stay. Can be
+  overridden by command-line options.
+- `ignore`: List of `file_name:line_number` pairs to ignore when researching
+  TODOs. This may be useful if you have, for example, Spanish language text in
+  your project or you talk about TODOs a lot :-)
 
 ### _Exempli gratiā_
 
 ```yaml
 ---
+threshold: 1
+max_age_in_days: 1
 ignore:
-  - lib/glyptodont/checkers/counter.rb:28
-  - lib/glyptodont/todo_researcher.rb:34
+  - README.md:11
+  - lib/glyptodont/checkers/counter.rb:30
+  - lib/glyptodont/todo_researcher.rb:33
+  - spec/checkers/counter_spec.rb:20
 ```
 
 ## Requirements
