@@ -12,6 +12,9 @@ require "forwardable"
 module Glyptodont
   # Main class where all the work happens
   class Checker
+    DEFAULT_THRESHOLD = 10
+    DEFAULT_MAX_AGE_IN_DAYS = 14
+
     def initialize(args)
       @options = Options.new(args)
       @configuration = Configuration.new(directory)
@@ -38,11 +41,11 @@ module Glyptodont
     def_delegators :@options, :directory
 
     def threshold
-      options.threshold || configuration.threshold
+      options.threshold || configuration.threshold || DEFAULT_THRESHOLD
     end
 
     def max_age_in_days
-      options.max_age_in_days || configuration.max_age_in_days
+      options.max_age_in_days || configuration.max_age_in_days || DEFAULT_MAX_AGE_IN_DAYS
     end
   end
 end
