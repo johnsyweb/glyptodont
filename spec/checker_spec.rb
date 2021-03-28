@@ -7,9 +7,8 @@ RSpec.describe Glyptodont::Checker do
     let(:args) { [] }
 
     context "defaults" do
-
-      its(:threshold) { is_expected.to eq 10}
-      its(:max_age_in_days) { is_expected.to eq 14}
+      its(:threshold) { is_expected.to eq 10 }
+      its(:max_age_in_days) { is_expected.to eq 14 }
     end
 
     context "values in options" do
