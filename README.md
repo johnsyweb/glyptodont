@@ -1,7 +1,7 @@
 # Glyptodont
 
-Use this gem if you have ever deployed code to production without doing all of
-your to-dos.
+Use this gem if you want to avoid deploying code to production without doing all
+of your to-dos.
 
 ## Introduction
 

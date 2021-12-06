@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["paj+github@johnsy.com"]
 
   spec.summary       = "A bit like `git grep 'T0D0'`, but better."  # .tr("0", "O")
-  spec.description   = "Use this gem if you have ever deployed code to production without doing all of your to-dos"
+  spec.description   = "Use this gem if you want to avoid deploying code to production without doing all of your to-dos"
   spec.homepage      = GITHUB_URL
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.5")
