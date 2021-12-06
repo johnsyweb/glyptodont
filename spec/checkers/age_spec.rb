@@ -7,7 +7,7 @@ RSpec.describe Glyptodont::Checkers::Age do
       line: rand(1000),
       text: "exmaple text",
       name: "name",
-      time: Time.now - age * (24 * 60 * 60),
+      time: Time.now - (age * (24 * 60 * 60)),
       age: age
     }
   end

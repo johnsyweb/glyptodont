@@ -8,6 +8,11 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- Dropped support for Ruby version older than 2.5 [[#4]]
+
+[#4]: https://github.com/johnsyweb/glyptodont/pull/4
 [Unreleased]: https://github.com/johnsyweb/glyptodont/compare/v0.2.0..main
 
 ## [0.2.0] - 2021-03-28
