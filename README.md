@@ -9,7 +9,7 @@ All of the glyptodonts have fossilised. This is a tool to ensure that your TODOs
 are eradicated before this can happen to them.
 
 If you've ever been caught out because a TODO in production code has not been
-don, this gem is for ***you***!
+_done_, this gem is for ***you***!
 
 ## Development status [![Ruby](https://github.com/johnsyweb/glyptodont/actions/workflows/main.yml/badge.svg)](https://github.com/johnsyweb/glyptodont/actions/workflows/main.yml)
 
