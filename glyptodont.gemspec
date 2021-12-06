@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Use this gem if you have ever deployed code to production without doing all of your to-dos"
   spec.homepage      = GITHUB_URL
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.5")
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = GITHUB_URL

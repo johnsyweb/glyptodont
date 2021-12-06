@@ -86,7 +86,7 @@ ignore:
 
 ## Requirements
 
-- Ruby (tested against v2.4 and above)
+- Ruby (tested against v2.5 and above)
 - Git
 - CMake
 
