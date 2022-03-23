@@ -22,7 +22,7 @@ and this project adheres to
 
 [#4]: https://github.com/johnsyweb/glyptodont/pull/4
 [#5]: https://github.com/johnsyweb/glyptodont/pull/5
-[Unreleased]: https://github.com/johnsyweb/glyptodont/compare/v0.2.0..v0.3.0
+[0.3.0]: https://github.com/johnsyweb/glyptodont/compare/v0.2.0..v0.3.0
 
 ## [0.2.0] - 2021-03-28
 
