@@ -26,7 +26,7 @@ release a new version, update the version number in `version.rb`, and then run
 git commits and the created tag, and push the `.gem` file to
 [rubygems.org](https://rubygems.org).
 
-## Getting started [![Gem version](https://img.shields.io/gem/v/glyptodont.svg?style=flat-square)](https://github.com/johnysweb/glyptodont) [![Gem downloads](https://img.shields.io/gem/dt/glyptodont.svg?style=flat-square)](https://rubygems.org/gems/glyptodont)
+## Getting started [![Gem version](https://img.shields.io/gem/v/glyptodont.svg?style=flat-square)](https://github.com/johnsyweb/glyptodont) [![Gem downloads](https://img.shields.io/gem/dt/glyptodont.svg?style=flat-square)](https://rubygems.org/gems/glyptodont)
 
 Add this line to your application's Gemfile:
 
