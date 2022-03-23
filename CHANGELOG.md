@@ -8,12 +8,21 @@ and this project adheres to
 
 ## [Unreleased]
 
+[Unreleased]: https://github.com/johnsyweb/glyptodont/compare/v0.3.0..main
+
+## [0.3.0] - 2022-03-23
+
+### Added
+
+- `keywords` option and configuration for TODO synonyms [[#5]]
+
 ### Changed
 
 - Dropped support for Ruby version older than 2.5 [[#4]]
 
 [#4]: https://github.com/johnsyweb/glyptodont/pull/4
-[Unreleased]: https://github.com/johnsyweb/glyptodont/compare/v0.2.0..main
+[#5]: https://github.com/johnsyweb/glyptodont/pull/5
+[Unreleased]: https://github.com/johnsyweb/glyptodont/compare/v0.2.0..v0.3.0
 
 ## [0.2.0] - 2021-03-28
 
