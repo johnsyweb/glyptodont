@@ -53,6 +53,7 @@ Usage: glyptodont [options]
     -d, --directory DIRECTORY        Git repository to search for TODOs (default '.')
     -t, --threshold TODOS            Maximum number of TODOs to allow (default 10)
     -m, --max-age DAYS               Maximum number of days to allow TODOs to stay (default 14)
+    -k, --keywords TODO,WORDS        Keywords to treat as 'TODO' (default FIXME,HACK,TODO,XXX)
         --version                    Show version
 ```
 
@@ -70,6 +71,8 @@ root of the directory being scanned.
 - `ignore`: List of `file_name:line_number` pairs to ignore when researching
   TODOs. This may be useful if you have, for example, Spanish language text in
   your project or you talk about TODOs a lot :-)
+- `keywords`: List of synonyms for TODO in your project. I've seen some
+  interesting alternatives over the years.
 
 ### _Exempli gratiā_
 

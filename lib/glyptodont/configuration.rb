@@ -24,6 +24,10 @@ module Glyptodont
       @max_age_in_days ||= config.fetch("max_age_in_days", nil)
     end
 
+    def keywords
+      @keywords ||= config.fetch("keywords", nil)
+    end
+
     private
 
     attr_reader :config_filename

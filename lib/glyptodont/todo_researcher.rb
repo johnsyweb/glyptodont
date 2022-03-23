@@ -6,9 +6,10 @@ require "rugged"
 module Glyptodont
   # Finds all the TODOs in a directory managed by Git, who last touched them and when.
   class TodoResearcher
-    def initialize(directory, ignore)
+    def initialize(directory, ignore, keywords)
       @directory = directory
       @ignore = ignore
+      @keywords = Array(keywords)
       @annotator = {}
     end
 
@@ -18,7 +19,7 @@ module Glyptodont
 
     private
 
-    attr_reader :directory, :ignore
+    attr_reader :directory, :ignore, :keywords
 
     def git
       Git.open(directory)
@@ -26,15 +27,6 @@ module Glyptodont
 
     def keyword_rexexp
       "\\b\\(#{keywords.join('\|')}\\)\\b"
-    end
-
-    def keywords
-      %w[
-        FIXME
-        HACK
-        TODO
-        XXX
-      ]
     end
 
     def extract_details(todos)
