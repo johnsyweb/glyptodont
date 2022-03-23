@@ -14,6 +14,12 @@ module Glyptodont
   class Checker
     DEFAULT_THRESHOLD = 10
     DEFAULT_MAX_AGE_IN_DAYS = 14
+    DEFAULT_KEYWORDS = %w[
+      FIXME
+      HACK
+      TODO
+      XXX
+    ].freeze
 
     def initialize(args)
       @options = Options.new(args)
@@ -21,7 +27,7 @@ module Glyptodont
     end
 
     def check
-      todos = TodoResearcher.new(directory, ignore).research
+      todos = TodoResearcher.new(directory, ignore, keywords).research
 
       checks = [
         Checkers::Counter.new(todos: todos, threshold: threshold),
@@ -46,6 +52,10 @@ module Glyptodont
 
     def max_age_in_days
       options.max_age_in_days || configuration.max_age_in_days || DEFAULT_MAX_AGE_IN_DAYS
+    end
+
+    def keywords
+      options.keywords || configuration.keywords || DEFAULT_KEYWORDS
     end
   end
 end
