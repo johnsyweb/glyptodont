@@ -9,7 +9,15 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+run() {
+  if [ -f ".tool-versions" ] && command -v mise >/dev/null 2>&1; then
+    mise exec -- "$@"
+  else
+    "$@"
+  fi
+}
+
 # no argument provided, so just run the local console in the development
 # environment. Ensure the application is up to date first.
 script/update
-bin/console
+run bin/console

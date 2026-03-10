@@ -3,21 +3,26 @@
 # script/test: Run test suite for application. Optionally pass in a path to an
 #              individual test file to run a single test.
 
-
 set -e
 
 cd "$(dirname "$0")/.."
 
 [ -z "$DEBUG" ] || set -x
 
+run() {
+  if [ -f ".tool-versions" ] && command -v mise >/dev/null 2>&1; then
+    mise exec -- "$@"
+  else
+    "$@"
+  fi
+}
+
 echo "==> Code quality…"
-bundle exec rubocop
+run bundle exec rubocop
 
 echo "==> Running tests…"
-
 if [ -n "$1" ]; then
-  # pass arguments to test call. This is useful for calling a single test.
-  bundle exec rspec "$1"
+  run bundle exec rspec "$@"
 else
-  bundle exec rspec
+  run bundle exec rspec
 fi

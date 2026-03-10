@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-group :developement, :test do
+group :development, :test do
   gem "rake"
   gem "rspec"
   gem "rspec-its"

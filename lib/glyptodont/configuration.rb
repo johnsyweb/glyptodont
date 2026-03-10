@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "set"
 require "yaml"
 
 module Glyptodont
@@ -41,13 +40,13 @@ module Glyptodont
     end
 
     def extract_ignore_set
-      config.fetch("ignore", []).map do |line|
+      Set.new(config.fetch("ignore", [])) do |line|
         parts = line.split(":", 2)
         {
           file: parts[0],
           line: parts[1].to_i
         }
-      end.to_set
+      end
     end
   end
 end

@@ -16,9 +16,10 @@ _done_, this gem is for ***you***!
 This was written after I was bitten by a TODO not being _done_ at work. I expect
 to build it into our CI pipeline and see what it catches.
 
-After checking out the project, run `script/setup` to install dependencies. Then,
-run `script/tests` to run the tests. You can also run `script/console` for an
-interactive prompt that will allow you to experiment.
+After checking out the project, install [Mise](https://mise.jdx.dev/) (the only
+external prerequisite). Then run `script/setup`: it installs everything in
+`.tool-versions` (Ruby and CMake) and the gem dependencies. Run `script/test` to
+run the tests. You can also run `script/console` for an interactive prompt.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To
 release a new version, update the version number in `version.rb`, and then run
@@ -89,9 +90,9 @@ ignore:
 
 ## Requirements
 
-- Ruby (tested against v2.5 and above)
-- Git
-- CMake
+- [Mise](https://mise.jdx.dev/) — install once; `script/setup` uses it to install
+  Ruby and CMake from `.tool-versions`.
+- Git — for development and for the rugged gem at runtime.
 
 ## Contributing
 
