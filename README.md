@@ -34,8 +34,8 @@ Releases can be created in two ways.
 [Release Please](https://github.com/googleapis/release-please-action) runs on pushes to
 `main`/`master`. It opens a **Release PR** that updates `lib/glyptodont/version.rb` and
 `CHANGELOG.md` from conventional commits. Merge that PR to create the Git tag and
-GitHub Release. Then run `bundle exec rake release` to publish the gem to
-[rubygems.org](https://rubygems.org).
+GitHub Release; the gem is then published to [rubygems.org](https://rubygems.org) via
+[Trusted Publishing](https://guides.rubygems.org/trusted-publishing/) (no API key in CI).
 
 **Manual release**  
 With [git-cliff](https://git-cliff.org/) installed (e.g. `mise install`):
