@@ -9,4 +9,6 @@ cd "$(dirname "$0")/.."
 
 script/bootstrap
 
+script/install-hooks
+
 echo "==> App is now ready to go!"

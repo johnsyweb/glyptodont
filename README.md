@@ -18,8 +18,10 @@ to build it into our CI pipeline and see what it catches.
 
 After checking out the project, install [Mise](https://mise.jdx.dev/) (the only
 external prerequisite). Then run `script/setup`: it installs everything in
-`.tool-versions` (Ruby and CMake) and the gem dependencies. Run `script/test` to
-run the tests. You can also run `script/console` for an interactive prompt.
+`.tool-versions` (Ruby and CMake), the gem dependencies, and Git hooks that
+enforce [Conventional Commits](https://www.conventionalcommits.org/) and run
+`script/test` (RuboCop + RSpec) before each commit. Run `script/test` manually
+when needed; you can also run `script/console` for an interactive prompt.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
 

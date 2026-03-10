@@ -1,0 +1,21 @@
+#!/bin/sh
+# Check that commit messages in the given range follow Conventional Commits.
+# Usage: script/check-commit-messages [range]
+#   range: git revision range (e.g. HEAD~3..HEAD or abc..HEAD); default HEAD.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+range="${1:-HEAD}"
+
+for rev in $(git rev-list "$range"); do
+  git log -1 --format=%B "$rev" > /tmp/commit-msg-check.$$
+  if ! ./.githooks/commit-msg /tmp/commit-msg-check.$$; then
+    echo "Invalid commit: $rev" >&2
+    git log -1 --oneline "$rev" >&2
+    rm -f /tmp/commit-msg-check.$$
+    exit 1
+  fi
+  rm -f /tmp/commit-msg-check.$$
+done

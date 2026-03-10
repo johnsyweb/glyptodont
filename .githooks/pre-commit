@@ -1,0 +1,13 @@
+#!/bin/sh
+# Run project checks before allowing a commit.
+# Requires Mise and script/test (RuboCop + RSpec).
+
+set -e
+
+cd "$(git rev-parse --show-toplevel)"
+
+if [ -f ".tool-versions" ] && command -v mise >/dev/null 2>&1; then
+  mise exec -- ./script/test
+else
+  ./script/test
+fi
