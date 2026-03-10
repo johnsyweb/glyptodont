@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
+    <title>Glyptodont | TODO checker for CI/CD | johnsy.com</title>
+    <meta name="description" content="Glyptodont scans your Git repo for TODO-style comments and fails CI when they exceed your limits. Free, open-source Ruby gem. Use in GitHub Actions, Buildkite, or locally." />
+    <meta name="keywords" content="glyptodont, TODO checker, FIXME, CI, CD, GitHub Actions, Buildkite, Ruby gem, technical debt, code quality" />
+    <meta name="author" content="johnsy.com" />
+    <link rel="canonical" href="https://www.johnsy.com/glyptodont/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.johnsy.com/glyptodont/" />
+    <meta property="og:title" content="Glyptodont — TODO checker for CI/CD" />
+    <meta property="og:description" content="Scan your repo for TODOs and fail CI when they exceed your limits. Free Ruby gem for GitHub Actions, Buildkite, and more." />
+    <meta property="og:image" content="https://www.johnsy.com/glyptodont/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Glyptodont documentation" />
+    <link rel="stylesheet" href="https://www.johnsy.com/assets/css/style.min.css" />
+    <link rel="stylesheet" href="https://www.johnsy.com/assets/css/colors-light.min.css" media="(prefers-color-scheme: light)" />
+    <link rel="stylesheet" href="https://www.johnsy.com/assets/css/colors-dark.min.css" media="(prefers-color-scheme: dark)" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Glyptodont",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cross-platform",
+        "url": "https://www.johnsy.com/glyptodont/",
+        "description": "Glyptodont scans your Git repository for TODO-style comments (TODO, FIXME, HACK, XXX) and fails when they exceed your limits. Use in CI/CD or locally.",
+        "author": {
+          "@type": "Person",
+          "name": "Pete Johns",
+          "url": "https://www.johnsy.com/about/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "johnsy.com"
+        },
+        "inLanguage": "en-AU",
+        "softwareVersion": "0.3.0",
+        "downloadUrl": "https://rubygems.org/gems/glyptodont",
+        "codeRepository": "https://github.com/johnsyweb/glyptodont"
+      }
+    </script>
+    <script type="application/ld+json" id="breadcrumb-data">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "johnsy.com",
+            "item": "https://www.johnsy.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Glyptodont",
+            "item": "https://www.johnsy.com/glyptodont/"
+          }
+        ]
+      }
+    </script>
+    <style>
+      #content pre { margin: 1rem 0; overflow-x: auto; }
+      #content pre code { padding: 0; background: transparent; }
+    </style>
+  </head>
+  <body>
+    <a href="#content" class="skip-link">Skip to main content</a>
+    <header id="header">
+      <div class="header-inner">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="https://www.johnsy.com/">johnsy.com</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Glyptodont</span>
+        </nav>
+        <h1><a href="https://www.johnsy.com/">johnsy.com</a></h1>
+        <p class="header-tagline">Pete Johns (<a href="https://namedrop.io/petejohns"><em>/piːt ʤɒnz/</em></a> — <a href="https://pronouns.org/he">he/him/his</a>): Human being; just like you.</p>
+      </div>
+    </header>
+
+    <div id="page">
+      <div id="sidebar">
+        <nav aria-label="Main navigation">
+          <ul class="main-nav">
+            <li><a href="https://www.johnsy.com/" accesskey="h" title="Home (Access key: Alt+Shift+H on Windows, Control+Option+H on macOS)"><span class="accesskey-letter">H</span><span class="accesskey-rest">ome</span></a></li>
+            <li><a href="https://www.johnsy.com/about/" accesskey="a" title="About (Access key: Alt+Shift+A on Windows, Control+Option+A on macOS)"><span class="accesskey-letter">A</span><span class="accesskey-rest">bout</span></a></li>
+            <li><a href="https://www.johnsy.com/blog/" accesskey="b" title="Blog (Access key: Alt+Shift+B on Windows, Control+Option+B on macOS)"><span class="accesskey-letter">B</span><span class="accesskey-rest">log</span></a></li>
+            <li><a href="https://www.johnsy.com/contact/" accesskey="c" title="Contact (Access key: Alt+Shift+C on Windows, Control+Option+C on macOS)"><span class="accesskey-letter">C</span><span class="accesskey-rest">ontact</span></a></li>
+            <li><a href="https://www.johnsy.com/parkrun-utilities/" accesskey="p" title="parkrun utilities (Access key: Alt+Shift+p on Windows, Control+Option+p on macOS)"><span class="accesskey-letter">p</span><span class="accesskey-rest">arkrun utilities</span></a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div id="content" role="main">
+        <h1>Glyptodont</h1>
+        <p>Documentation for the Glyptodont gem. See also the <a href="https://github.com/johnsyweb/glyptodont/blob/HEAD/README.md">README</a> and <a href="https://github.com/johnsyweb/glyptodont#configuration">configuration reference</a>.</p>
+
+        <hr />
+
+        <h2>What?</h2>
+        <p><strong>Glyptodont</strong> is a command-line tool that scans a Git repository for TODO-style comments (e.g. <code>TODO</code>, <code>FIXME</code>, <code>HACK</code>, <code>XXX</code>) and fails if they exceed your limits. It helps stop unfinished work from reaching production.</p>
+        <p>You run it in CI or locally; it reports how many TODOs were found and how old the oldest ones are, and exits with a non-zero code when your thresholds are exceeded.</p>
+
+        <h2>Why?</h2>
+        <p>All the glyptodonts have fossilised. This tool makes sure your TODOs don’t do the same.</p>
+        <p>If you’ve ever been bitten by a TODO in production that was never <em>done</em>, Glyptodont is for you. It gives you:</p>
+        <ul>
+          <li><strong>Visibility</strong> — See how many TODOs exist and how long they’ve been there.</li>
+          <li><strong>Gates</strong> — Enforce a maximum count and/or maximum age so builds fail when technical debt crosses the line.</li>
+          <li><strong>Configurability</strong> — Per-repo limits, custom keywords, and ignore rules so you can adopt it gradually.</li>
+        </ul>
+
+        <h2>How much?</h2>
+        <ul>
+          <li><strong>Cost:</strong> Glyptodont is free and open source (<a href="https://opensource.org/licenses/MIT">MIT</a>). No paid tiers or usage limits.</li>
+          <li><strong>Limits you configure:</strong> You decide how many TODOs are allowed and how old they can be:
+            <ul>
+              <li><strong>Threshold</strong> — Maximum number of TODOs allowed (default: 10).</li>
+              <li><strong>Max age</strong> — Maximum age in days for the youngest TODO over the threshold (default: 14 days).</li>
+            </ul>
+          </li>
+        </ul>
+        <p>Both can be set via command-line options, a <code>.glyptodont.yaml</code> file in the repo, or a mix (options override config).</p>
+
+        <h2>How?</h2>
+
+        <h3>Install</h3>
+        <pre><code>gem install glyptodont</code></pre>
+        <p>Or add to your application’s Gemfile:</p>
+        <pre><code>gem "glyptodont"</code></pre>
+        <p>Then run:</p>
+        <pre><code>bundle exec glyptodont</code></pre>
+        <p>Optional: put a <a href="https://github.com/johnsyweb/glyptodont#configuration"><code>.glyptodont.yaml</code></a> in the repo root to set <code>threshold</code>, <code>max_age_in_days</code>, <code>keywords</code>, and <code>ignore</code> entries.</p>
+
+        <h3>Use in CI/CD</h3>
+        <p>Run <code>glyptodont</code> (or <code>bundle exec glyptodont</code>) after checkout. If the repo exceeds your limits, the command exits non-zero and the pipeline fails.</p>
+
+        <h3>GitHub Actions</h3>
+        <p>Add a job that installs Ruby, installs the gem, and runs Glyptodont. Example:</p>
+        <pre><code>jobs:
+  glyptodont:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v2
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+
+      - name: Install Glyptodont
+        run: gem install glyptodont
+
+      - name: Check TODOs
+        run: glyptodont</code></pre>
+        <p>To use a strict policy (e.g. only 5 TODOs, max 7 days old), pass options:</p>
+        <pre><code>      - name: Check TODOs
+        run: glyptodont --threshold 5 --max-age 7</code></pre>
+        <p>If your project already uses Bundler, you can add the gem and run it via Bundler instead:</p>
+        <pre><code>      - name: Check TODOs
+        run: |
+          bundle config set --local path vendor/bundle
+          bundle install
+          bundle exec glyptodont</code></pre>
+
+        <h3>Buildkite</h3>
+        <p>Add a command step that runs Glyptodont. Your agent must have Ruby (and CMake if the gem is built from source). Example:</p>
+        <pre><code>steps:
+  - label: "Check TODOs"
+    command: |
+      gem install glyptodont
+      glyptodont</code></pre>
+        <p>With a strict policy:</p>
+        <pre><code>  - label: "Check TODOs"
+    command: |
+      gem install glyptodont
+      glyptodont --threshold 5 --max-age 7</code></pre>
+        <p>If your pipeline already uses Bundler (e.g. <code>bundle install</code> in an earlier step), add <code>gem "glyptodont"</code> to the Gemfile and run:</p>
+        <pre><code>  - label: "Check TODOs"
+    command: bundle exec glyptodont</code></pre>
+        <p><strong>Using Docker:</strong> You can run Glyptodont in a container so the agent doesn’t need Ruby. See <a href="https://github.com/johnsyweb/glyptodont-docker">glyptodont-docker</a> for an image and example:</p>
+        <pre><code>  - label: "Check TODOs"
+    command: docker run --rm -v "$(pwd):/repo" johnsyweb/glyptodont-docker glyptodont --directory /repo</code></pre>
+        <p>(Adjust the image name and mount path to match the image you use.)</p>
+
+        <h2>Where?</h2>
+        <ul>
+          <li><strong>Source:</strong> <a href="https://github.com/johnsyweb/glyptodont">github.com/johnsyweb/glyptodont</a></li>
+          <li><strong>Gem:</strong> <a href="https://rubygems.org/gems/glyptodont">rubygems.org/gems/glyptodont</a></li>
+          <li><strong>Docker (community):</strong> <a href="https://github.com/johnsyweb/glyptodont-docker">github.com/johnsyweb/glyptodont-docker</a> — for running in CI without installing Ruby on the agent</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="footer-inner">
+        <p>
+          Copyright &copy; 2000–<span id="current-year"></span>
+          <a rel="author" href="https://www.johnsy.com/about/"><em><abbr title="Peter Alexander Johns">paj</abbr></em></a>
+          All rights (and some wrongs) reserved.
+        </p>
+        <p>
+          Hosted by <a href="https://github.com">GitHub</a>, powered by <a href="https://jekyllrb.com">Jekyll</a>. <a href="https://status.johnsy.com">System status</a>.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
