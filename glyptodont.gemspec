@@ -3,6 +3,7 @@
 require_relative "lib/glyptodont/version"
 
 GITHUB_URL = "https://github.com/johnsyweb/glyptodont/"
+DOCS_URL   = "https://www.johnsy.com/glyptodont/"
 
 Gem::Specification.new do |spec|
   spec.name          = "glyptodont"
@@ -10,9 +11,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Pete Johns"]
   spec.email         = ["paj+github@johnsy.com"]
 
-  spec.summary       = "A bit like `git grep 'T0D0'`, but better." # .tr("0", "O")
+  spec.summary       = "A bit like `git grep 'T0D0'`, but better.".tr("0", "O")
   spec.description   = "Use this gem if you want to avoid deploying code to production without doing all of your to-dos"
-  spec.homepage      = GITHUB_URL
+  spec.homepage      = DOCS_URL
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 3.2")
 
