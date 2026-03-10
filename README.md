@@ -27,14 +27,23 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ### Releasing
 
-This project uses [Conventional Commits](https://www.conventionalcommits.org/) and
-[git-cliff](https://git-cliff.org/) to generate the changelog. Ensure git-cliff is
-installed (e.g. `mise install` from `.tool-versions`).
+This project uses [Conventional Commits](https://www.conventionalcommits.org/).
+Releases can be created in two ways.
+
+**Release bot (recommended)**  
+[Release Please](https://github.com/googleapis/release-please-action) runs on pushes to
+`main`/`master`. It opens a **Release PR** that updates `lib/glyptodont/version.rb` and
+`CHANGELOG.md` from conventional commits. Merge that PR to create the Git tag and
+GitHub Release. Then run `bundle exec rake release` to publish the gem to
+[rubygems.org](https://rubygems.org).
+
+**Manual release**  
+With [git-cliff](https://git-cliff.org/) installed (e.g. `mise install`):
 
 1. Bump the version in `lib/glyptodont/version.rb` (e.g. `0.4.0`).
 2. Commit the version bump.
-3. Run `bundle exec rake release` to create the git tag, push it, and publish the gem to [rubygems.org](https://rubygems.org).
-4. Run `rake changelog` (or `mise exec -- rake changelog`) to regenerate `CHANGELOG.md` with the new release, then commit and push.
+3. Run `bundle exec rake release` to create the tag, push it, and publish the gem.
+4. Run `rake changelog` (or `mise exec -- rake changelog`), then commit and push the updated `CHANGELOG.md`.
 
 ## Getting started [![Gem version](https://img.shields.io/gem/v/glyptodont.svg?style=flat-square)](https://github.com/johnsyweb/glyptodont) [![Gem downloads](https://img.shields.io/gem/dt/glyptodont.svg?style=flat-square)](https://rubygems.org/gems/glyptodont)
 
