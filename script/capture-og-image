@@ -1,0 +1,23 @@
+#!/bin/sh
+# Capture the Glyptodont docs OG image using the johnsy.com site repo.
+# Usage:
+#   script/capture-og-image [url]
+#     url: page to capture (default: http://127.0.0.1:4000/glyptodont/)
+
+set -e
+
+this_dir="$(cd "$(dirname "$0")" && pwd)"
+glyptodont_root="$(cd "$this_dir/.." && pwd)"
+site_root="$glyptodont_root/../johnsy.com/johnsyweb.github.io"
+
+if [ ! -d "$site_root" ]; then
+  echo "capture-og-image: expected site repo at $site_root" >&2
+  exit 1
+fi
+
+url="${1:-http://127.0.0.1:4000/glyptodont/}"
+
+cd "$site_root"
+echo "Capturing OG image from: $url"
+node scripts/capture-glyptodont-og-image.mjs "$url"
+
