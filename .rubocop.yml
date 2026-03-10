@@ -1,6 +1,10 @@
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 3.2
+
+plugins:
+  - rubocop-rake
+  - rubocop-rspec
 
 Style/StringLiterals:
   Enabled: true

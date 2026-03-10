@@ -16,15 +16,38 @@ _done_, this gem is for ***you***!
 This was written after I was bitten by a TODO not being _done_ at work. I expect
 to build it into our CI pipeline and see what it catches.
 
-After checking out the project, run `script/setup` to install dependencies. Then,
-run `script/tests` to run the tests. You can also run `script/console` for an
-interactive prompt that will allow you to experiment.
+[Dependabot](https://docs.github.com/en/code-security/dependabot) is configured
+to open PRs for Bundler and GitHub Actions (weekly). A workflow enables
+auto-merge on those PRs so GitHub merges them when required status checks pass.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To
-release a new version, update the version number in `version.rb`, and then run
-`bundle exec rake release`, which will create a git tag for the version, push
-git commits and the created tag, and push the `.gem` file to
-[rubygems.org](https://rubygems.org).
+After checking out the project, install [Mise](https://mise.jdx.dev/) (the only
+external prerequisite). Then run `script/setup`: it installs everything in
+`.tool-versions` (Ruby and CMake), the gem dependencies, and Git hooks that
+enforce [Conventional Commits](https://www.conventionalcommits.org/) and run
+`script/test` (RuboCop + RSpec) before each commit. Run `script/test` manually
+when needed; you can also run `script/console` for an interactive prompt.
+
+To install this gem onto your local machine, run `bundle exec rake install`.
+
+### Releasing
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/).
+Releases can be created in two ways.
+
+**Release bot (recommended)**  
+[Release Please](https://github.com/googleapis/release-please-action) runs on pushes to
+`main`/`master`. It opens a **Release PR** that updates `lib/glyptodont/version.rb` and
+`CHANGELOG.md` from conventional commits. Merge that PR to create the Git tag and
+GitHub Release; the gem is then published to [rubygems.org](https://rubygems.org) via
+[Trusted Publishing](https://guides.rubygems.org/trusted-publishing/) (no API key in CI).
+
+**Manual release**  
+With [git-cliff](https://git-cliff.org/) installed (e.g. `mise install`):
+
+1. Bump the version in `lib/glyptodont/version.rb` (e.g. `0.4.0`).
+2. Commit the version bump.
+3. Run `bundle exec rake release` to create the tag, push it, and publish the gem.
+4. Run `rake changelog` (or `mise exec -- rake changelog`), then commit and push the updated `CHANGELOG.md`.
 
 ## Getting started [![Gem version](https://img.shields.io/gem/v/glyptodont.svg?style=flat-square)](https://github.com/johnsyweb/glyptodont) [![Gem downloads](https://img.shields.io/gem/dt/glyptodont.svg?style=flat-square)](https://rubygems.org/gems/glyptodont)
 
@@ -89,9 +112,9 @@ ignore:
 
 ## Requirements
 
-- Ruby (tested against v2.5 and above)
-- Git
-- CMake
+- [Mise](https://mise.jdx.dev/) — install once; `script/setup` uses it to install
+  Ruby and CMake from `.tool-versions`.
+- Git — for development and for the rugged gem at runtime.
 
 ## Contributing
 

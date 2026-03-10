@@ -1,1 +1,3 @@
-ruby 3.0.0
+ruby 4.0
+cmake latest
+git-cliff latest

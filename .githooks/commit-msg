@@ -1,0 +1,29 @@
+#!/bin/sh
+# Validate conventional commit message format.
+# See https://www.conventionalcommits.org/
+
+set -e
+
+msg_file="$1"
+if [ ! -f "$msg_file" ]; then
+  echo "commit-msg: no message file" >&2
+  exit 1
+fi
+
+first_line=$(head -n 1 "$msg_file")
+
+# Allow merge and revert commits
+case "$first_line" in
+  Merge\ *) exit 0 ;;
+  Revert\ *) exit 0 ;;
+esac
+
+# Conventional: type(scope)?!?: description
+# Types: feat, fix, docs, style, refactor, perf, test, build, ci, chore
+if echo "$first_line" | grep -qE '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore)(\([a-zA-Z0-9_.-]+\))?!?: .+'; then
+  exit 0
+fi
+
+echo "commit-msg: commit message must follow Conventional Commits (e.g. feat: add X, fix: resolve Y)." >&2
+echo "  First line: $first_line" >&2
+exit 1

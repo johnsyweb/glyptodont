@@ -1,0 +1,39 @@
+# Publish to RubyGems.org when a version tag is pushed (e.g. by merging a Release Please PR).
+# Uses RubyGems Trusted Publishing (OIDC); no API key needed.
+# One-time setup: add this repo and workflow on https://rubygems.org (Trusted Publishers).
+
+name: Publish gem
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Mise
+        uses: jdx/mise-action@v3
+        with:
+          tool_versions: |
+            ruby 4.0
+            cmake
+          cache: true
+
+      - name: Install Bundler and gems
+        run: |
+          bundle config set path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Publish to RubyGems.org
+        uses: rubygems/release-gem@v1

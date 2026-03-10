@@ -3,50 +3,134 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to
-[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/johnsyweb/glyptodont/compare/v0.3.0..main
+### Changed
+
+- xp
+
+- drop support for Ruby < 3.2 (EOL); require Ruby 3.2+
+
+- add conventional commits changelog and release workflow
+
+- enforce conventional commits and run checks before each commit
+
+- add Release Please release bot
+
+- publish gem to RubyGems via Trusted Publishing on tag push
+
+- add documentation page for GitHub Pages
+
+- set homepage to docs at www.johnsy.com/glyptodont/
+
+- add Dependabot and automerge workflow for dependency updates
+
+- remove automerge setup note from README
+
+- check conventional commits only from first conventional commit onwards
+
+- add .nojekyll so GitHub Pages does not use Jekyll
+
 
 ## [0.3.0] - 2022-03-23
 
-### Added
-
-- `keywords` option and configuration for TODO synonyms [[#5]]
-
 ### Changed
 
-- Dropped support for Ruby version older than 2.5 [[#4]]
+- Fix link
 
-[#4]: https://github.com/johnsyweb/glyptodont/pull/4
-[#5]: https://github.com/johnsyweb/glyptodont/pull/5
-[0.3.0]: https://github.com/johnsyweb/glyptodont/compare/v0.2.0..v0.3.0
+- tyop
+
+- Support Ruby 2.5 through 3.1
+
+- Add Rubocop plugins
+
+- Improve gem description
+
+- Gemspec/RequireMFA
+
+- Lint/AmbiguousOperatorPrecedence
+
+- Update Changelog
+
+- Add keywords option/configuration for TODO synonyms
+
+- v0.3.0
+
+- 2022
+
+- Changelog for v0.3.0
+
+- Fix anchor
+
 
 ## [0.2.0] - 2021-03-28
 
-### Added
+### Changed
 
-- Configuration settings for `max_age_in_days` and `threshold`, to allow for
-  setting these per project. [[#3]]
+- TODOs have moved
+
+- Cache the annotator for a file
+
+- See also!
+
+- return empty hash if the config file is empty
+
+- add rspec-its
+
+- add cmd-line options into config
+
+- pass ARGV to the initializer not the check
+
+- report all old TODOs, use age of the youngest in message
+
+- passing case wasn't handling the new threshold checking, fixed now
+
+- Style
+
+- Move requirements around
+
+- Extract #stale_todos and #oldest_age
+
+- Spec for counter
+
+- Update configuration file
+
+- Document new configuration options
+
+- Changelog for v0.2.0
+
+- Fake configuration to make tests pass again
+
+- Run rubocop in ci
+
+- Bump version
+
+
+## [0.1.0] - 2021-03-16
 
 ### Changed
 
-- Report all old TODOs, use age of the youngest in message [[#2]]
+- Initial version
 
-### Fixed
+- //xkcd.com/149/
 
-- Handle empty configuration file [[#1]]
+- Allow for excluding certain lines
 
-[#1]: https://github.com/johnsyweb/glyptodont/pull/1
-[#2]: https://github.com/johnsyweb/glyptodont/pull/2
-[#3]: https://github.com/johnsyweb/glyptodont/pull/3
+- Handle missing / empty configuration
 
+- All or nothing
+
+- Use OptionParser to document command-line options
+
+- Please Read Me
+
+- Test more Rubies
+
+
+[Unreleased]: https://github.com/johnsyweb/glyptodont/compare/v0.3.0..HEAD
+[0.3.0]: https://github.com/johnsyweb/glyptodont/compare/v0.2.0..v0.3.0
 [0.2.0]: https://github.com/johnsyweb/glyptodont/compare/v0.1.0..v0.2.0
-
-## [0.1.0] - 2021-03-13
-
-- Initial release
-
 [0.1.0]: https://github.com/johnsyweb/glyptodont/releases/tag/v0.1.0
+

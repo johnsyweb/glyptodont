@@ -1,0 +1,15 @@
+#!/bin/sh
+# Configure Git to use the project's hooks (conventional commits + pre-commit checks).
+# Run once after clone, or from script/setup.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ ! -d ".githooks" ]; then
+  echo "install-hooks: .githooks not found" >&2
+  exit 1
+fi
+
+git config core.hooksPath .githooks
+echo "==> Git hooks installed (commit-msg: conventional commits; pre-commit: script/test)"

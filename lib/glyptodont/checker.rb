@@ -26,7 +26,7 @@ module Glyptodont
       @configuration = Configuration.new(directory)
     end
 
-    def check
+    def check?
       todos = TodoResearcher.new(directory, ignore, keywords).research
 
       checks = [
@@ -34,7 +34,7 @@ module Glyptodont
         Checkers::Age.new(todos: todos, threshold: max_age_in_days)
       ].freeze
 
-      checks.each { |check| puts check.check }
+      checks.each { |c| puts c.check }
 
       checks.all?(&:passed?)
     end

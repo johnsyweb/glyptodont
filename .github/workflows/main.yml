@@ -1,26 +1,61 @@
 name: Ruby
 
-on: [push,pull_request]
+on: [push, pull_request]
 
 jobs:
+  commit-messages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check commit messages
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            range="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+          else
+            before="${{ github.event.before }}"
+            if [ "$before" = "0000000000000000000000000000000000000000" ] || [ -z "$before" ]; then
+              range="${{ github.sha }}"
+            else
+              range="$before..${{ github.sha }}"
+            fi
+          fi
+          ./script/check-commit-messages "$range"
+
   build:
+    needs: commit-messages
     strategy:
       fail-fast: false
       matrix:
-        ruby: ['2.5', '2.6', '2.7', '3.0', '3.1']
+        ruby: ["3.2", "3.3", "3.4", "4.0"]
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
+      - name: Set up Mise
+        uses: jdx/mise-action@v3
+        with:
+          tool_versions: |
+            ruby ${{ matrix.ruby }}
+            cmake
+          cache: true
 
-    - name: Run The CI Build
-      run: |
-        gem install bundler
-        sudo apt install cmake
-        bundle install
-        ./script/cibuild
+      - name: Cache Bundler
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: bundle-${{ runner.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            bundle-${{ runner.os }}-${{ matrix.ruby }}-
+
+      - name: Install Bundler and gems
+        run: |
+          bundle config set path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Run the CI build
+        run: ./script/cibuild
