@@ -21,11 +21,18 @@ external prerequisite). Then run `script/setup`: it installs everything in
 `.tool-versions` (Ruby and CMake) and the gem dependencies. Run `script/test` to
 run the tests. You can also run `script/console` for an interactive prompt.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To
-release a new version, update the version number in `version.rb`, and then run
-`bundle exec rake release`, which will create a git tag for the version, push
-git commits and the created tag, and push the `.gem` file to
-[rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
+
+### Releasing
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) and
+[git-cliff](https://git-cliff.org/) to generate the changelog. Ensure git-cliff is
+installed (e.g. `mise install` from `.tool-versions`).
+
+1. Bump the version in `lib/glyptodont/version.rb` (e.g. `0.4.0`).
+2. Commit the version bump.
+3. Run `bundle exec rake release` to create the git tag, push it, and publish the gem to [rubygems.org](https://rubygems.org).
+4. Run `rake changelog` (or `mise exec -- rake changelog`) to regenerate `CHANGELOG.md` with the new release, then commit and push.
 
 ## Getting started [![Gem version](https://img.shields.io/gem/v/glyptodont.svg?style=flat-square)](https://github.com/johnsyweb/glyptodont) [![Gem downloads](https://img.shields.io/gem/dt/glyptodont.svg?style=flat-square)](https://rubygems.org/gems/glyptodont)
 
