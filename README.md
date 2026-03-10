@@ -16,6 +16,12 @@ _done_, this gem is for ***you***!
 This was written after I was bitten by a TODO not being _done_ at work. I expect
 to build it into our CI pipeline and see what it catches.
 
+[Dependabot](https://docs.github.com/en/code-security/dependabot) is configured
+to open PRs for Bundler and GitHub Actions (weekly). A workflow enables
+auto-merge on those PRs so GitHub merges them when required status checks pass;
+enable **Allow auto-merge** in the repo’s Pull Requests settings and require
+status checks on the default branch.
+
 After checking out the project, install [Mise](https://mise.jdx.dev/) (the only
 external prerequisite). Then run `script/setup`: it installs everything in
 `.tool-versions` (Ruby and CMake), the gem dependencies, and Git hooks that
