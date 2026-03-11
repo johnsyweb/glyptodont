@@ -172,6 +172,7 @@
           <li><strong>max_age_in_days</strong> — Maximum number of days to allow TODOs to stay. Overridable by <code>--max-age</code>.</li>
           <li><strong>ignore</strong> — List of <code>file_name:line_number</code> pairs to ignore (e.g. Spanish text or frequent mentions of TODOs).</li>
           <li><strong>keywords</strong> — List of synonyms for TODO in your project.</li>
+          <li><strong>documentation_files</strong> — List of documentation files to skip entirely when scanning for TODOs (e.g. <code>CHANGELOG.md</code>, <code>docs/index.html</code>).</li>
         </ul>
         <p>Example:</p>
         <pre><code>---
@@ -181,7 +182,10 @@ ignore:
   - README.md:11
   - lib/glyptodont/checkers/counter.rb:30
   - lib/glyptodont/todo_researcher.rb:33
-  - spec/checkers/counter_spec.rb:20</code></pre>
+  - spec/checkers/counter_spec.rb:20
+documentation_files:
+  - CHANGELOG.md
+  - docs/index.html</code></pre>
 
         <h3 id="command-line-options">Command-line options</h3>
         <pre><code>Usage: glyptodont [options]

@@ -27,6 +27,10 @@ module Glyptodont
       @keywords ||= config.fetch("keywords", nil)
     end
 
+    def documentation_files
+      @documentation_files ||= Array(config.fetch("documentation_files", []))
+    end
+
     private
 
     attr_reader :config_filename

@@ -27,7 +27,7 @@ module Glyptodont
     end
 
     def check?
-      todos = TodoResearcher.new(directory, ignore, keywords).research
+      todos = TodoResearcher.new(directory, ignore, keywords, documentation_files).research
 
       checks = [
         Checkers::Counter.new(todos: todos, threshold: threshold),
@@ -44,6 +44,7 @@ module Glyptodont
     extend Forwardable
 
     def_delegator :@configuration, :ignore
+    def_delegator :@configuration, :documentation_files
     def_delegators :@options, :directory
 
     def threshold

@@ -72,6 +72,11 @@ gem install glyptodont
 For usage, command-line options, configuration (`.glyptodont.yaml`), and CI
 examples (GitHub Actions, Buildkite, Docker), see the [documentation](https://www.johnsy.com/glyptodont/).
 
+To avoid TODO-style comments in documentation and changelogs causing noise, you
+can list whole documentation files in the `documentation_files` key in
+`.glyptodont.yaml` (e.g. `CHANGELOG.md`, `docs/index.html`). Those files will
+be skipped entirely, while source files continue to be checked.
+
 ## Requirements
 
 - [Mise](https://mise.jdx.dev/) — install once; `script/setup` uses it to install
