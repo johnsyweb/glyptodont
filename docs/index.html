@@ -14,10 +14,10 @@
     <meta property="og:url" content="https://www.johnsy.com/glyptodont/" />
     <meta property="og:title" content="Glyptodont — TODO checker for CI/CD" />
     <meta property="og:description" content="Scan your repo for TODOs and fail CI when they exceed your limits. Free Ruby gem for GitHub Actions, Buildkite, and more." />
-    <meta property="og:image" content="https://www.johnsy.com/glyptodont/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Glyptodont documentation" />
+    <meta property="og:image" content="https://www.johnsy.com/glyptodont/glyptodon.png" />
+    <meta property="og:image:width" content="717" />
+    <meta property="og:image:height" content="561" />
+    <meta property="og:image:alt" content="Paleoart: Glyptodon, a large extinct armadillo from the Pleistocene in South America" />
     <link rel="stylesheet" href="https://www.johnsy.com/assets/css/style.min.css" />
     <link rel="stylesheet" href="https://www.johnsy.com/assets/css/colors-light.min.css" media="(prefers-color-scheme: light)" />
     <link rel="stylesheet" href="https://www.johnsy.com/assets/css/colors-dark.min.css" media="(prefers-color-scheme: dark)" />
@@ -99,15 +99,42 @@
 
       <div id="content" role="main">
         <h1>Glyptodont</h1>
-        <p>Documentation for the Glyptodont gem. See also the <a href="https://github.com/johnsyweb/glyptodont/blob/HEAD/README.md">README</a> and <a href="https://github.com/johnsyweb/glyptodont#configuration">configuration reference</a>.</p>
+        <p>Documentation for the Glyptodont gem. See also the <a href="https://github.com/johnsyweb/glyptodont/blob/HEAD/README.md">README</a> and <a href="#configuration">configuration</a> below.</p>
+
+        <figure style="max-width: 717px; margin: 1.5rem 0;">
+          <img src="glyptodon.png" width="717" height="561" alt="Paleoart: Glyptodon, a large extinct armadillo from the Pleistocene in South America" />
+          <figcaption>
+            <a href="https://commons.wikimedia.org/wiki/File:Glyptodon_noir_et_blanc-edit.png">Glyptodon (noir et blanc)</a> by <a href="https://en.wikipedia.org/wiki/User:Pavel.Riha.CB">Pavel Riha</a>, edit by <a href="https://commons.wikimedia.org/wiki/User:Walk%C3%A9">Walké</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.
+          </figcaption>
+        </figure>
 
         <hr />
 
-        <h2>What?</h2>
+        <nav aria-label="Table of contents">
+          <h2>Contents</h2>
+          <ul>
+            <li><a href="#what">What?</a></li>
+            <li><a href="#why">Why?</a></li>
+            <li><a href="#how-much">How much?</a></li>
+            <li><a href="#how">How?</a>
+              <ul>
+                <li><a href="#install">Install</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#command-line-options">Command-line options</a></li>
+                <li><a href="#use-in-cicd">Use in CI/CD</a></li>
+                <li><a href="#github-actions">GitHub Actions</a></li>
+                <li><a href="#buildkite">Buildkite</a></li>
+              </ul>
+            </li>
+            <li><a href="#where">Where?</a></li>
+          </ul>
+        </nav>
+
+        <h2 id="what">What?</h2>
         <p><strong>Glyptodont</strong> is a command-line tool that scans a Git repository for TODO-style comments (e.g. <code>TODO</code>, <code>FIXME</code>, <code>HACK</code>, <code>XXX</code>) and fails if they exceed your limits. It helps stop unfinished work from reaching production.</p>
         <p>You run it in CI or locally; it reports how many TODOs were found and how old the oldest ones are, and exits with a non-zero code when your thresholds are exceeded.</p>
 
-        <h2>Why?</h2>
+        <h2 id="why">Why?</h2>
         <p>All the glyptodonts have fossilised. This tool makes sure your TODOs don’t do the same.</p>
         <p>If you’ve ever been bitten by a TODO in production that was never <em>done</em>, Glyptodont is for you. It gives you:</p>
         <ul>
@@ -116,7 +143,7 @@
           <li><strong>Configurability</strong> — Per-repo limits, custom keywords, and ignore rules so you can adopt it gradually.</li>
         </ul>
 
-        <h2>How much?</h2>
+        <h2 id="how-much">How much?</h2>
         <ul>
           <li><strong>Cost:</strong> Glyptodont is free and open source (<a href="https://opensource.org/licenses/MIT">MIT</a>). No paid tiers or usage limits.</li>
           <li><strong>Limits you configure:</strong> You decide how many TODOs are allowed and how old they can be:
@@ -128,20 +155,46 @@
         </ul>
         <p>Both can be set via command-line options, a <code>.glyptodont.yaml</code> file in the repo, or a mix (options override config).</p>
 
-        <h2>How?</h2>
+        <h2 id="how">How?</h2>
 
-        <h3>Install</h3>
+        <h3 id="install">Install</h3>
         <pre><code>gem install glyptodont</code></pre>
         <p>Or add to your application’s Gemfile:</p>
         <pre><code>gem "glyptodont"</code></pre>
         <p>Then run:</p>
         <pre><code>bundle exec glyptodont</code></pre>
-        <p>Optional: put a <a href="https://github.com/johnsyweb/glyptodont#configuration"><code>.glyptodont.yaml</code></a> in the repo root to set <code>threshold</code>, <code>max_age_in_days</code>, <code>keywords</code>, and <code>ignore</code> entries.</p>
+        <p>Optional: put a <a href="#configuration"><code>.glyptodont.yaml</code></a> in the repo root to set <code>threshold</code>, <code>max_age_in_days</code>, <code>keywords</code>, and <code>ignore</code> entries.</p>
 
-        <h3>Use in CI/CD</h3>
+        <h3 id="configuration">Configuration</h3>
+        <p>Glyptodont looks for an optional <code>.glyptodont.yaml</code> file in the root of the directory being scanned.</p>
+        <ul>
+          <li><strong>threshold</strong> — Maximum number of TODOs to allow. Overridable by <code>--threshold</code>.</li>
+          <li><strong>max_age_in_days</strong> — Maximum number of days to allow TODOs to stay. Overridable by <code>--max-age</code>.</li>
+          <li><strong>ignore</strong> — List of <code>file_name:line_number</code> pairs to ignore (e.g. Spanish text or frequent mentions of TODOs).</li>
+          <li><strong>keywords</strong> — List of synonyms for TODO in your project.</li>
+        </ul>
+        <p>Example:</p>
+        <pre><code>---
+threshold: 1
+max_age_in_days: 1
+ignore:
+  - README.md:11
+  - lib/glyptodont/checkers/counter.rb:30
+  - lib/glyptodont/todo_researcher.rb:33
+  - spec/checkers/counter_spec.rb:20</code></pre>
+
+        <h3 id="command-line-options">Command-line options</h3>
+        <pre><code>Usage: glyptodont [options]
+    -d, --directory DIRECTORY        Git repository to search for TODOs (default '.')
+    -t, --threshold TODOS            Maximum number of TODOs to allow (default 10)
+    -m, --max-age DAYS               Maximum number of days to allow TODOs to stay (default 14)
+    -k, --keywords TODO,WORDS        Keywords to treat as 'TODO' (default FIXME,HACK,TODO,XXX)
+        --version                    Show version</code></pre>
+
+        <h3 id="use-in-cicd">Use in CI/CD</h3>
         <p>Run <code>glyptodont</code> (or <code>bundle exec glyptodont</code>) after checkout. If the repo exceeds your limits, the command exits non-zero and the pipeline fails.</p>
 
-        <h3>GitHub Actions</h3>
+        <h3 id="github-actions">GitHub Actions</h3>
         <p>Add a job that installs Ruby, installs the gem, and runs Glyptodont. Example:</p>
         <pre><code>jobs:
   glyptodont:
@@ -150,7 +203,7 @@
       - uses: actions/checkout@v4
 
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v2
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
           bundler-cache: true
@@ -170,7 +223,7 @@
           bundle install
           bundle exec glyptodont</code></pre>
 
-        <h3>Buildkite</h3>
+        <h3 id="buildkite">Buildkite</h3>
         <p>Add a command step that runs Glyptodont. Your agent must have Ruby (and CMake if the gem is built from source). Example:</p>
         <pre><code>steps:
   - label: "Check TODOs"
@@ -190,7 +243,7 @@
     command: docker run --rm -v "$(pwd):/repo" johnsyweb/glyptodont-docker glyptodont --directory /repo</code></pre>
         <p>(Adjust the image name and mount path to match the image you use.)</p>
 
-        <h2>Where?</h2>
+        <h2 id="where">Where?</h2>
         <ul>
           <li><strong>Source:</strong> <a href="https://github.com/johnsyweb/glyptodont">github.com/johnsyweb/glyptodont</a></li>
           <li><strong>Gem:</strong> <a href="https://rubygems.org/gems/glyptodont">rubygems.org/gems/glyptodont</a></li>

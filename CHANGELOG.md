@@ -10,29 +10,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - xp
-
 - drop support for Ruby < 3.2 (EOL); require Ruby 3.2+
-
 - add conventional commits changelog and release workflow
-
 - enforce conventional commits and run checks before each commit
-
 - add Release Please release bot
-
 - publish gem to RubyGems via Trusted Publishing on tag push
-
 - add documentation page for GitHub Pages
-
 - set homepage to docs at www.johnsy.com/glyptodont/
-
 - add Dependabot and automerge workflow for dependency updates
-
 - remove automerge setup note from README
-
 - check conventional commits only from first conventional commit onwards
-
 - add .nojekyll so GitHub Pages does not use Jekyll
 
+## [0.3.1] - 2026-03-11
+
+### Fixed
+
+- Do not require `bundler/setup` in the executable. The gem now runs correctly when the current directory has a Gemfile (e.g. in CI or when running in the gem's own repo).
 
 ## [0.3.0] - 2022-03-23
 
