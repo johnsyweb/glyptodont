@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0](https://github.com/johnsyweb/glyptodont/compare/v0.3.0...v1.0.0) (2026-03-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for Ruby < 3.2 (EOL); require Ruby 3.2+
+
+### Bug Fixes
+
+* do not require bundler/setup in executable ([83d4f0c](https://github.com/johnsyweb/glyptodont/commit/83d4f0ce45654ee683a807860dd28e81f44170e5))
+* use release-please-config.json so Release Please finds config ([c8c7f1b](https://github.com/johnsyweb/glyptodont/commit/c8c7f1b1f3cb6716e47838c2a744c03473c9f77d))
+* use release-please-config.json so Release Please finds config ([16f0f13](https://github.com/johnsyweb/glyptodont/commit/16f0f13a1b9fe6d3f3e03d20b28ea68e3fb31fe0))
+
+
+### Miscellaneous Chores
+
+* drop support for Ruby &lt; 3.2 (EOL); require Ruby 3.2+ ([0c0fbcd](https://github.com/johnsyweb/glyptodont/commit/0c0fbcde6748c7dca61bb2f8b09955b2b011a8c1))
+
 ## [Unreleased]
 
 ### Changed
@@ -127,4 +145,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.3.0]: https://github.com/johnsyweb/glyptodont/compare/v0.2.0..v0.3.0
 [0.2.0]: https://github.com/johnsyweb/glyptodont/compare/v0.1.0..v0.2.0
 [0.1.0]: https://github.com/johnsyweb/glyptodont/releases/tag/v0.1.0
-
