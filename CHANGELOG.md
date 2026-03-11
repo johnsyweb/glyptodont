@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0](https://github.com/johnsyweb/glyptodont/compare/v1.0.0...v1.1.0) (2026-03-11)
+
+
+### Features
+
+* support documentation_files in configuration ([b6d2745](https://github.com/johnsyweb/glyptodont/commit/b6d27453f9ccb8198a20d45043335511f0d9e49a))
+
 ## [1.0.0](https://github.com/johnsyweb/glyptodont/compare/v0.3.0...v1.0.0) (2026-03-11)
 
 
