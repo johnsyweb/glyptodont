@@ -1,14 +1,21 @@
 ---
 threshold: 1
 max_age_in_days: 1
+documentation_files:
+  - README.md
+  - CHANGELOG.md
+  - docs/index.html
 ignore:
-  - README.md:11
-  - README.md:16
+  - lib/glyptodont/checker.rb:18
+  - lib/glyptodont/checker.rb:19
+  - lib/glyptodont/checker.rb:20
+  - lib/glyptodont/checker.rb:21
   - lib/glyptodont/checkers/counter.rb:30
   - lib/glyptodont/checkers/counter.rb:32
-  - lib/glyptodont/todo_researcher.rb:33
-  - lib/glyptodont/todo_researcher.rb:34
-  - lib/glyptodont/todo_researcher.rb:35
-  - lib/glyptodont/todo_researcher.rb:36
-  - spec/checkers/counter_spec.rb:20
-  - spec/checkers/counter_spec.rb:28
+  - lib/glyptodont/options.rb:52
+  - lib/glyptodont/options.rb:54
+  - spec/glyptodont/checkers/counter_spec.rb:20
+  - spec/glyptodont/checkers/counter_spec.rb:28
+  - spec/glyptodont/todo_researcher_spec.rb:10
+  - spec/glyptodont/todo_researcher_spec.rb:33
+  - spec/glyptodont/todo_researcher_spec.rb:34
