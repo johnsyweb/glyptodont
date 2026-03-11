@@ -69,46 +69,8 @@ Or install it yourself as:
 gem install glyptodont
 ```
 
-## Usage
-
-```
-Usage: glyptodont [options]
-    -d, --directory DIRECTORY        Git repository to search for TODOs (default '.')
-    -t, --threshold TODOS            Maximum number of TODOs to allow (default 10)
-    -m, --max-age DAYS               Maximum number of days to allow TODOs to stay (default 14)
-    -k, --keywords TODO,WORDS        Keywords to treat as 'TODO' (default FIXME,HACK,TODO,XXX)
-        --version                    Show version
-```
-
-## Configuration
-
-glyptodont looks for an optional `.glyptodont.yaml` configuration file in the
-root of the directory being scanned.
-
-### Sections
-
-- `threshold`: Maximum number of TODOs to allow. Can be overridden by
-  command-line options.
-- `max_age_in_days`: Maximum number of days to allow TODOs to stay. Can be
-  overridden by command-line options.
-- `ignore`: List of `file_name:line_number` pairs to ignore when researching
-  TODOs. This may be useful if you have, for example, Spanish language text in
-  your project or you talk about TODOs a lot :-)
-- `keywords`: List of synonyms for TODO in your project. I've seen some
-  interesting alternatives over the years.
-
-### _Exempli gratiā_
-
-```yaml
----
-threshold: 1
-max_age_in_days: 1
-ignore:
-  - README.md:11
-  - lib/glyptodont/checkers/counter.rb:30
-  - lib/glyptodont/todo_researcher.rb:33
-  - spec/checkers/counter_spec.rb:20
-```
+For usage, command-line options, configuration (`.glyptodont.yaml`), and CI
+examples (GitHub Actions, Buildkite, Docker), see the [documentation](https://www.johnsy.com/glyptodont/).
 
 ## Requirements
 
